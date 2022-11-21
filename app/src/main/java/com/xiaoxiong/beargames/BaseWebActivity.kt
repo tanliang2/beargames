@@ -13,10 +13,15 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.AttributeSet
+import android.view.KeyEvent
 import android.view.View
 import android.webkit.*
+import android.widget.Toast
+import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.android.loan.ca.ui.main.widget.ExitDialog
+import com.xiaoxiong.beargames.util.AppManager
 import com.xiaoxiong.beargames.util.StatusBarUtil
 
 /**
@@ -28,17 +33,17 @@ class BaseWebActivity : Activity() {
     private var isSupportZoom = false
     private var titleGravity = -1
     private var webView: WebView? = null
+    private var backTimes :Int = 0
+    private var lastBackTime :Long = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppManager.addActivity(this)
         StatusBarUtil.transparencyBar(this)
         setContentView(R.layout.activity_web)
         webView = findViewById(R.id.webview)
     }
-
-//    fun setToolBarBackgroundColor(colorRes: Int) {
-//        findViewById<Toolbar>(R.id.toolbar)?.setBackgroundColor(colorRes)
-//    }
 
     @SuppressLint("JavascriptInterface")
     private val runnable = Runnable {
@@ -141,18 +146,6 @@ class BaseWebActivity : Activity() {
         }
     }
 
-    fun callJsOnBackPress() {
-//        binding.webView?.evaluateJavascript("javascript:onBackPressed()") {
-//            Logger.d(TAG,"onBackPressed it:${it}")
-//            if(it?.contains("pageSuccess") == true){
-//                Logger.d(TAG,"onBackPressed pageSuccess")
-//            } else {
-//                Logger.d(TAG,"onBackPressed call finished")
-//                finish()
-//            }
-//        }
-    }
-
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
         val handler = Handler()
@@ -164,12 +157,19 @@ class BaseWebActivity : Activity() {
 
     override fun onResume() {
         super.onResume()
-
     }
 
     override fun onBackPressed() {
-        callJsOnBackPress()
+        backTimes ++
+        if(System.currentTimeMillis() - lastBackTime < 500 && backTimes > 1) {
+            AppManager.appExit(this,false)
+        } else {
+            Toast.makeText(this, getString(R.string.exit_toast_tip),Toast.LENGTH_LONG).show()
+        }
+        lastBackTime = System.currentTimeMillis()
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

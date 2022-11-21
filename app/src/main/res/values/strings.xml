@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">beargames</string>
+    <string name="app_name">红中麻将</string>
+    <string name="exit_tip">要离开应用么？不再玩会？</string>
+    <string name="exit_ok">确定</string>
+    <string name="exit_cancel">取消</string>
+    <string name="exit_toast_tip">快速双击返回退出应用</string>
 </resources>

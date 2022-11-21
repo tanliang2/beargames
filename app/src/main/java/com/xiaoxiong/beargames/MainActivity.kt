@@ -2,11 +2,13 @@ package com.xiaoxiong.beargames
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.xiaoxiong.beargames.util.AppManager
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        AppManager.addActivity(this)
         BaseWebActivity.startWebActivity(this,GAME_HOME_URL)
     }
 
