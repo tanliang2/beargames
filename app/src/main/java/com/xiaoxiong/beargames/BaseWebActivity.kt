@@ -6,21 +6,18 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.net.Uri
 import android.net.http.SslError
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.AttributeSet
-import android.view.KeyEvent
 import android.view.View
 import android.webkit.*
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import com.android.loan.ca.ui.main.widget.ExitDialog
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import com.xiaoxiong.beargames.util.AppManager
 import com.xiaoxiong.beargames.util.StatusBarUtil
 
@@ -35,10 +32,12 @@ class BaseWebActivity : Activity() {
     private var webView: WebView? = null
     private var backTimes :Int = 0
     private var lastBackTime :Long = 0
-
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        firebaseAnalytics = Firebase.analytics
+        firebaseAnalytics.logEvent("open_app",null)
         AppManager.addActivity(this)
         StatusBarUtil.transparencyBar(this)
         setContentView(R.layout.activity_web)
@@ -173,6 +172,7 @@ class BaseWebActivity : Activity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        firebaseAnalytics.logEvent("exit_app",null)
     }
 
     companion object {
