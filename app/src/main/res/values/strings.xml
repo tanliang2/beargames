@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">红中麻将</string>
+    <string name="app_name">小熊红鸟麻将</string>
     <string name="exit_tip">要离开应用么？不再玩会？</string>
     <string name="exit_ok">确定</string>
     <string name="exit_cancel">取消</string>

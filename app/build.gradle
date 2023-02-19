@@ -35,6 +35,31 @@ android {
     viewBinding {
         enabled = true
     }
+
+    File keyPropertiesFile = file(rootProject.rootDir.absolutePath + "/keystore/key.properties")
+    Properties keyProperties = new Properties()
+    keyProperties.load(new FileInputStream(keyPropertiesFile))
+
+    signingConfigs {
+        release {
+            keyAlias keyProperties["release.key_alias"]
+            keyPassword keyProperties["release.key_password"]
+            storeFile file(rootProject.rootDir.absolutePath + keyProperties["release.key_file"])
+            storePassword keyProperties["release.store_password"]
+        }
+  /*      debug {
+            keyAlias keyProperties["debug.key_alias"]
+            keyPassword keyProperties["debug.key_password"]
+            storeFile file(rootProject.rootDir.absolutePath + keyProperties["debug.key_file"])
+            storePassword keyProperties["debug.store_password"]
+        }*/
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
 }
 
 dependencies {
