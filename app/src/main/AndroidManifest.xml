@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".BaseWebActivity"
+            android:name=".LoginWebActivity"
             android:exported="true">
         </activity>
     </application>

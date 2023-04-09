@@ -1,7 +1,6 @@
 package com.xiaoxiong.beargames
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.xiaoxiong.beargames.util.AppManager
 
@@ -10,7 +9,7 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppManager.addActivity(this)
-        BaseWebActivity.startWebActivity(this,GAME_HOME_URL)
+        LoginWebActivity.startWebActivity(this,GAME_HOME_URL)
     }
 
     companion object {

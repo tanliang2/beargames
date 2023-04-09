@@ -4,4 +4,5 @@
     <string name="exit_ok">确定</string>
     <string name="exit_cancel">取消</string>
     <string name="exit_toast_tip">快速双击返回退出应用</string>
+
 </resources>

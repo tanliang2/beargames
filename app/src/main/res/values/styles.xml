@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="commonNegativeButtonAppearance">
+        <item name="android:background">@drawable/shape_round_8</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_height">@dimen/dp_48</item>
+        <item name="android:layout_width">@dimen/dp_0</item>
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+        <item name="android:layout_marginEnd">@dimen/dp_20</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <!--通用的暗色按钮样式-->
+    <style name="commonButtonDarkAppearance">
+        <item name="android:background">@drawable/shape_round_8</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_height">@dimen/dp_48</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+        <item name="android:layout_marginEnd">@dimen/dp_20</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>
