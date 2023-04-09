@@ -41,7 +41,6 @@ class LoginWebActivity : AppCompatActivity() {
         firebaseAnalytics = Firebase.analytics
         firebaseAnalytics.logEvent("open_app",null)
         AppManager.addActivity(this)
-        StatusBarUtil.transparencyBar(this)
         setContentView(R.layout.activity_web)
         webView = findViewById(R.id.webview)
         var hasShow = SPUtils.getSharedBooleanData(this, PermissionDialogFragment.KEY_AGREE_PRIVACY,false)
@@ -49,6 +48,8 @@ class LoginWebActivity : AppCompatActivity() {
             permissionDialogFragment = PermissionDialogFragment()
             permissionDialogFragment?.show(supportFragmentManager,"permissionDialogFragment")
         }
+        StatusBarUtil.transparencyBar(this)
+
     }
 
     @SuppressLint("JavascriptInterface")
@@ -163,6 +164,7 @@ class LoginWebActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        StatusBarUtil.transparencyBar(this)
     }
 
     override fun onBackPressed() {

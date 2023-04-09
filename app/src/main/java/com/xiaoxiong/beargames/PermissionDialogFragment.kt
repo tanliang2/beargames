@@ -144,7 +144,7 @@ class PermissionDialogFragment : DialogFragment() {
         return 0
     }
 
-     fun dialogHeight(): Int = ScreenUtils.getScreenHeight(requireContext()) * 140 / 180
+     fun dialogHeight(): Int = ScreenUtils.getScreenHeight(requireContext()) * 120 / 180
      fun dialogWidth(): Int = ScreenUtils.getScreenWidth(requireContext()) * 164 / 180
 
     companion object {
